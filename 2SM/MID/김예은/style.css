@@ -1,0 +1,94 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+.content {
+    position: relative;
+    top: 5vh;
+    text-decoration: none;
+}
+
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index: 1000;
+    padding: 2vh 3vw;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav { 
+    display: flex;
+    gap: 2vw;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5vh;
+}
+
+.logo {
+    width: 2vw;
+}
+
+.semester {
+    font-size: 1.5vh;
+    color: black;
+    text-decoration: none;
+}
+
+.about {
+    font-size: 5vh;
+    width: 100vw;
+    padding: 2vh 20vw;
+    word-break: break-all;
+}
+
+.about h1 {
+    font-size: 5vh;
+}
+
+.footer {
+    padding-top: 1vh;
+    font-size: 2vh;
+}
+
+.info {
+    word-wrap: break-word;
+    margin-bottom: 4vh;
+}
+
+.info h2 {
+    font-size: 1.3vh;
+    padding-top: 1vh;
+    line-height: 1.5;
+}
+
+.info p {
+    max-width: 40vw;
+    font-size: 1vh;
+    padding-top: 1vh;
+    line-height: 1.8;
+}
+
+.project-images {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.project-images img {
+    width: 100%;
+    height: auto;
+    display: block;
+}

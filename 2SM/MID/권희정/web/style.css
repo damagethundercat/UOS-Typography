@@ -1,0 +1,700 @@
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    unicode-range: U+AC00-D7A3;
+}
+
+::-webkit-scrollbar {
+    width: 0px; 
+    height: 0px; 
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+    /* cursor: url('img/baby.png') 16 16, auto; */
+}
+
+body {
+    font-family: 'Montserrat Alternates', sans-serif;
+    height: 100vh;
+    width: 15000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: auto;
+    background-color: white;
+}
+
+/**/
+header {
+    font-weight: 500;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.menu ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+}
+
+.menu ul li {
+    list-style: none;
+    font-size: 24px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+#refresh {
+    position: fixed;
+    text-decoration: none;
+    font-size: 24px;
+    left: 30px;
+    top: 20px;
+}
+
+.atoz-container {
+    display: flex;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+}
+
+.atoz {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+}
+
+/* 각 버튼 스타일 */
+.atoz-container li button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0px;
+    height: 1.6vw;
+    border-radius: 50px;
+    font-size: 15px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    border: 2px dotted rgba(0, 0, 0, 0.2);
+    border-bottom: 5px solid rgba(0, 0, 0, 0.3);
+    transition: border 0.3s ease;
+    cursor: grab; /* 드래그하면.. 커서 변경 */
+}
+
+.atoz-container li button:active {
+    cursor: grabbing; /* 드래그 중일 때 커서 변경 */
+}
+
+.atoz-container li button:hover {
+    border: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+.atoz-container li button span {
+    z-index: 2;
+    display: inline-block;
+    transition: opacity 0.3s ease;
+}
+
+.atoz-container li button span.hidden {
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    text-align: center;
+}
+
+.atoz-container li button:hover span {
+    opacity: 0;
+}
+
+.atoz-container li button:hover span.hidden {
+    opacity: 1;
+}
+
+.atoz-container li:nth-child(1) button { width: 10vw; } /* Z */
+.atoz-container li:nth-child(2) button { width: 10.5vw; } /* Y */
+.atoz-container li:nth-child(3) button { width: 11vw; } /* X */
+.atoz-container li:nth-child(4) button { width: 11.5vw; } /* W */
+.atoz-container li:nth-child(5) button { width: 12vw; } /* V */
+.atoz-container li:nth-child(6) button { width: 12.5vw; } /* U */
+.atoz-container li:nth-child(7) button { width: 13vw; } /* T */
+.atoz-container li:nth-child(8) button { width: 13.5vw; } /* S */
+.atoz-container li:nth-child(9) button { width: 14vw; } /* R */
+.atoz-container li:nth-child(10) button { width: 14.5vw; } /* Q */
+.atoz-container li:nth-child(11) button { width: 15vw; } /* P */
+.atoz-container li:nth-child(12) button { width: 15.5vw; } /* O */
+.atoz-container li:nth-child(13) button { width: 16vw; } /* N */
+.atoz-container li:nth-child(14) button { width: 16.5vw; } /* M */
+.atoz-container li:nth-child(15) button { width: 17vw; } /* L */
+.atoz-container li:nth-child(16) button { width: 17.5vw; } /* K */
+.atoz-container li:nth-child(17) button { width: 18vw; } /* J */
+.atoz-container li:nth-child(18) button { width: 18.5vw; } /* I */
+.atoz-container li:nth-child(19) button { width: 19vw; } /* H */
+.atoz-container li:nth-child(20) button { width: 19.5vw; } /* G */
+.atoz-container li:nth-child(21) button { width: 20vw; } /* F */
+.atoz-container li:nth-child(22) button { width: 20.5vw; } /* E */
+.atoz-container li:nth-child(23) button { width: 21vw; } /* D */
+.atoz-container li:nth-child(24) button { width: 21.5vw; } /* C */
+.atoz-container li:nth-child(25) button { width: 22vw; } /* B */
+.atoz-container li:nth-child(26) button { width: 22.5vw; } /* A */
+
+
+
+.popup-container {
+    position: relative;  
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat Alternates', 'NanumSquareRound';
+    display: flex;
+}
+
+.popup {
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    border-radius: 30px;
+    padding: 20px;
+    padding-top: 25px;
+    z-index: 10;
+    overflow-x: auto;
+    overflow-y: auto;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    pointer-events: none; /*i will delete this code.. */
+    word-break: keep-all;
+    font-size: 12pt;
+    line-height: 18pt;
+
+}
+/**/
+.popup25{
+    margin-right: 100px;
+}
+
+.popup a {
+    pointer-events: auto;
+    color: blue;
+    text-decoration: underline red dotted 2px ;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.popup-hidden {
+    opacity: 0;
+}
+
+  
+/**/
+#popup24 {
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    border-width: 10px;
+}
+
+/**/
+#popup23{
+     pointer-events: auto;
+     cursor:none;
+}
+
+/**/
+.popup details {
+    pointer-events: auto;
+}
+
+/**/
+#popup18{
+    pointer-events: auto;
+}
+.eye {
+    width: 300px;
+    height: 300px;
+    margin-top: 20%;
+}
+
+.balloon {
+    position: absolute;
+    width: 32px;
+    height: 45px;
+    top: 48%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.8s ease;
+    cursor: cell;
+}
+
+/**/
+#popup19 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; 
+    margin: 0px;
+
+}
+/**/
+.gap{
+    display: flex;
+    width: 30px;
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    
+}
+
+.popup img.gap {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+}
+
+/**/
+#popup14{
+    letter-spacing: 0.6em;
+    overflow-y: auto;
+    pointer-events: auto;
+}
+
+
+/**/
+.key{
+    top:140px;
+    animation-iteration-count:infinite
+}
+
+@keyframes iteration-count{
+    from{
+      left:100px;
+    }
+    to{
+      left:300px;
+    }
+  }
+
+/*D*/
+
+#popup22 p {
+    color:white;
+    opacity: 70%;
+}
+
+summary {
+    color: #000000;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  #popup6 p{
+    text-decoration-line: overline;
+  }
+
+/*x*/
+#popup2 {
+    pointer-events: auto;
+    white-space: nowrap; 
+}
+
+.panorama {
+    display: inline-block; 
+    height: 400px;
+    width: 1000px;
+    overflow-x: scroll;
+}
+
+/*W*/
+#popup3{
+    overflow-y: auto;
+    pointer-events: auto;
+    word-break: keep-all;
+}
+
+.sero{
+    writing-mode: vertical-rl;
+}
+
+/*r*/
+
+.earth {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.moon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    transform-origin: 0% 0%; 
+    animation: orbit 5s linear infinite;
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translate(100px);
+    }
+    100% {
+        transform: rotate(360deg) translate(100px);
+    }
+}
+
+#popup17 {
+    position: relative;
+    word-wrap: normal;
+}
+
+.monna {
+    width: 200px;
+    float: left;
+    shape-outside: circle(50%);
+    margin-right: 10px;
+}
+
+.chim{
+    margin-bottom: 5px;
+}
+
+.mapa{
+    width: 300px;
+    height: 300px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+ol{
+    margin: 20px;
+    word-break: keep-all;
+}
+#popup11{
+    overflow-y: auto;
+    pointer-events: auto;
+}
+
+/* m */
+.popup13{
+    pointer-events: auto;
+}
+.video-container {
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nmixx1 {
+    position: absolute;
+    width: 300px;
+    height: 420px;
+    object-fit: cover;
+    mix-blend-mode:hard-light; 
+    opacity: 0.8;
+    transition: opacity 1s ease-in-out;
+}
+.nmixx2 {
+    position: absolute;
+    width: 300px;
+    height: 420px;
+    object-fit: cover;
+    mix-blend-mode: difference; 
+    opacity: 0.8; 
+    transition: opacity 1s ease-in-out;
+}
+.nmixx3 {
+    position: absolute;
+    width: 300px;
+    height: 420px;
+    object-fit: cover;
+    mix-blend-mode: color-dodge; 
+    opacity: 0.8; 
+    transition: opacity 1s ease-in-out;
+}
+
+#popup13 p{
+    position: absolute;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+/* j */
+.justify-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+#popup5{
+    overflow-y: auto;
+    pointer-events: auto;
+}
+
+#popup5 u{
+    text-underline-offset: 5px; 
+    text-decoration-thickness: 2px;
+}
+
+
+#popup9{
+    overflow-y: auto;
+    pointer-events: auto;
+}
+
+q{
+    font-weight: bold;
+}
+
+#popup10{
+    pointer-events: auto;
+}
+
+#popup10 p{
+    display: flex;
+    justify-content: center;
+    font-size: 20pt;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+#progressBar {
+    width: 300px;
+    
+}
+
+#videoPlayer {
+    display: block;
+    cursor: crosshair;
+    margin-top: 30px;
+}
+
+#endImage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#popup1{
+    overflow-y: auto;
+    pointer-events: auto;
+}
+
+#popup0{
+    pointer-events: auto;
+}
+.wally {
+    position: relative;
+    display: inline-block;
+   zoom: 1;  /* 원래 자기 크기 */
+    transition: all 0.3s ease; 
+    transform-origin: bottom right; 
+}
+
+.wally:hover {
+    zoom: 12; 
+    transform-origin: bottom right; 
+    margin-left: -195px; 
+    margin-top: -120px; 
+}
+
+
+#popup15 {
+    text-align: center;
+}
+
+#doorImage {
+    position: relative;
+    width: 300px;
+    transition: opacity 0.5s ease; 
+    margin: 0 auto; 
+}
+
+.image-container {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.image-container img {
+    width: 100%;
+    display: block;
+}
+
+.instruction {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+
+.image-container img {
+    width: 100%; 
+    display: block;
+}
+
+.image-container nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    padding: 10px 0;
+}
+
+.image-container nav ul {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    margin: 0;
+    padding: 0;
+}
+
+.image-container nav ul li {
+    flex: 1;
+    text-align: center; 
+}
+
+.image-container nav ul li a {
+    color: white; 
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#popup16 {
+    flex-direction: column;
+    overflow-y: auto;
+    pointer-events: auto;
+}
+
+.justify-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px; 
+}
+
+.justify-container img {
+    width: 300px;
+}
+
+.justify-container p {
+    text-align: center;
+    font-size: 14px;
+ 
+}
+
+#popup4 {
+    background-color: #f4f4f4;
+    overflow-y: auto;
+    font-size: 14pt;
+}
+
+.icon {
+    display: inline-block;
+    vertical-align: top; 
+    font-size: 6pt;
+}
+.icon2 {
+    display: inline-block; 
+    vertical-align: bottom; 
+    font-size: 6pt;
+}
+
+#popup21 {
+    pointer-events: auto;
+    overflow: hidden;
+  }
+  
+  .cake-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .cake-container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 500px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    filter: blur(20px);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
+  #cake{
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  
+
+.popup:nth-child(1) { top: 100px; left: 500px; background-color: #feb71e;}
+.popup:nth-child(2) { top: 300px; left: 1000px; background-color: #ff0a60;}
+.popup:nth-child(3) { top: 400px; left: 1500px; background-color: #E1BEE7;}
+.popup:nth-child(4) { top: 200px; left: 2000px; background-color: #f36c23;}
+.popup:nth-child(5) { top: 600px; left: 2500px; background-color: #C5CAE9;}
+.popup:nth-child(6) { top: 50px; left: 3000px; background-color: #ff6060;}
+.popup:nth-child(7) { top: 350px; left: 3500px; background-color: #fcb3e4;}
+.popup:nth-child(8) { top: 150px; left: 4000px; background-color: #38909c;}
+.popup:nth-child(9) { top: 500px; left: 4500px; background-color: #B2DFDB;}
+.popup:nth-child(10) { top: 200px; left: 5000px; background-color: #fffa9e;}
+.popup:nth-child(11) { top: 700px; left: 5500px; background-color: #c3ff7d;}
+.popup:nth-child(12) { top: 100px; left: 6000px; background-color: #ff67fa;}
+.popup:nth-child(13) { top: 450px; left: 6500px; background-color: #4aff74;}
+.popup:nth-child(14) { top: 300px; left: 7000px; background-color: #FFECB3;}
+.popup:nth-child(15) { top: 500px; left: 7500px; background-color: #2af126;}
+.popup:nth-child(16) { top: 100px; left: 8000px; background-color: #FFCCBC;}
+.popup:nth-child(17) { top: 650px; left: 8500px; background-color: #ff3de8;}
+.popup:nth-child(18) { top: 200px; left: 9000px; background-color: #CFD8DC;}
+.popup:nth-child(19) { top: 400px; left: 9500px; background-color: #FF8A80;}
+.popup:nth-child(20) { top: 600px; left: 10000px; background-color: #e5e246;}
+.popup:nth-child(21) { top: 150px; left: 10500px; background-color: #c335dc;}
+.popup:nth-child(22) { top: 350px; left: 11000px; background-color: #B388FF;}
+.popup:nth-child(23) { top: 50px; left: 11500px; background-color: #8C9EFF;}
+.popup:nth-child(24) { top: 250px; left: 12000px; background-color: #95ff00;}
+.popup:nth-child(25) { top: 450px; left: 12500px; background-color: #04b4ff;}
+.popup:nth-child(26) { top: 100px; left: 13000px; background-color: #84FFFF;}
+.popup:nth-child(27) { top: 150px; left: 13500px; background-color: transparent; box-shadow: none;}
+.popup:nth-child(28) { top: 150px; left: 14000px; background-color: transparent; box-shadow: none;}

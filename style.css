@@ -1,0 +1,81 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+.landing-page {
+    height: 99vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+ }
+ .title-container {
+    position: absolute;
+    top: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+ }
+.logo {
+    width: 3vw;
+    height: 3vh;
+    margin-top: 8vh;
+    justify-content: center;
+    
+}
+
+.title {
+    font-size: 5vw;
+ }
+.classname {
+    font-size: 2vw;
+    
+
+}
+ .subtitle {
+    padding-top: 2vh;
+    font-size: 1vw;
+    color: #666;
+    opacity: 1;
+ }
+
+ .names-grid {
+    position: absolute;
+    top: 48vh;
+    width: 12%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 50%;
+}
+
+.name-cell {
+    text-align: center;
+    font-size: 1vh;
+}
+
+
+ .navigation {
+    position: absolute;
+    bottom: 25vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-size: 1.5vh;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #666;
+}
